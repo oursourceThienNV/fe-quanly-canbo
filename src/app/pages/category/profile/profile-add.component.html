@@ -1,0 +1,815 @@
+<form [formGroup]="dataForm" (submit)="save()">
+  <div class="modal-header">
+    <h3 class="modal-title mt-0"><b>Thông tin hồ sơ</b></h3>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Tỉnh<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="province"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label >Đơn vị trực thuộc<span class="text-danger">*</span></label>
+          <input  type="text" class="form-control" formControlName="subsidiary_unit"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label >Đơn vị cơ sở<span class="text-danger">*</span></label>
+          <input  type="text" class="form-control" formControlName="basic_unit"  maxlength="50" trim>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Số hiệu cán bộ<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="code"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label >Họ và tên<span class="text-danger">*</span></label>
+          <input  type="text" class="form-control" formControlName="fullname"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label >Giới tính<span class="text-danger">*</span></label>
+          <select class="form-control" formControlName="gender">
+            <option value="Nam">Nam</option>
+            <option value="Nữ">Nữ</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Tên gọi khác<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="other_name"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label >Cấp ủy hiện tại<span class="text-danger">*</span></label>
+          <input  type="text" class="form-control" formControlName="cap_uy_hien_tai"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label >Cấp ủy kiêm<span class="text-danger">*</span></label>
+          <input  type="text" class="form-control" formControlName="cap_uy_kiem"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Chức vụ (Đảng, đoàn thể, Chính quyền, kể cả chức vụ kiêm nhiệm)<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="chuc_vu"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Phụ cấp chức vụ<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="phu_cap_chuc_vu"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Sinh năm<span class="text-danger">*</span></label>
+          <select formControlName="nam_sinh" class="form-control">
+            <option *ngFor="let namsinh of listNamSinh" [value]="namsinh">{{namsinh}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="mb-2">
+          <label>Nơi sinh<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="noi_sinh"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Quê quán (xã, phường):<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="que_quan"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Quận huyện<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="quan_huyen"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Tỉnh thành phố<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="tinh_tp"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="mb-2">
+          <label>Nơi ở hiện nay (Xã, huyện, tỉnh hoặc số nhà, đường phố, TP): <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="noi_o_hien_nay"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Số điện thoại<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="so_dien_thoai"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="mb-2">
+          <label>Dân tộc(Kinh, Tày, Mông, Ê đê...): <span class="text-danger">*</span></label>
+          <select formControlName="dan_toc" class="form-control">
+            <option  value="Kinh">Kinh</option>
+            <option  value="Khmer">Khmer</option>
+            <option  value="Hoa">Hoa</option>
+            <option  value="Chăm">Chăm</option>
+            <option  value="Khác">Khác</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Tôn giáo<span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ton_giao"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Thành phần gia đình xuất thân (Ghi là công nhân, nông dân, cán bộ, công chức, trí thức, quân nhân, dân nghèo thành thị, tiểu thương, tiểu chủ, tư sản ...)
+            : <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="thanh_phan_gia_dinh"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Nghề nghiệp bản thân trước khi được tuyển dụng(Ghi nghề được đào tạo hoặc công nhân (thợ gì), làm ruộng, buôn bàn, học sinh, ...) :
+             <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="nghe_nghiep_truoc_td"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Ngày được tuyển dụng:
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_tuyen_dung"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="mb-2">
+          <label>Vào cơ quan nào, ở đâu:
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="vao_co_quan"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Ngày vào cơ quan hiện đang công tác:
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_vao_co_quan"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="mb-2">
+          <label>Ngày tham gia cách mạng
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_tham_gia_cm"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Ngày vào Đảng Cộng sản Việt Nam:
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_vao_dang"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="mb-2">
+          <label>Ngày chính thức
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_chinh_thuc"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Ngày tham gia vào tổ chức chính trị
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_tham_gia_tc"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Ngày nhập ngũ
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_nhap_ngu"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Ngày xuất ngũ
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngay_xuat_ngu"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Quân hàm, chức vụ cao nhất (năm):
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="quan_ham"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Giáo dục phổ thông (lớp mấy)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="giao_duc_pt"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-9">
+        <div class="mb-2">
+          <label>Học hàm học vị cao nhất (GS, PGS, TS, PTS, Thạc sĩ, Cử nhân, Kỹ sư ... năm nào, chuyên ngành gì)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="hoc_ham_hoc_vi"  maxlength="50" trim>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-2">
+          <label>Lý luận chính trị (Cử nhân, Cao cấp, Trung cấp, Sơ cấp)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ly_luan_chinh_tri"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-2">
+          <label>Ngoại ngữ (Anh (A/B/C/D)      Nga (A/B/C/D)      Pháp (A/B/C/D) ...)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngoai_ngu"  maxlength="50" trim>
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Công tác chính đang làm
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="cong_tac_chinh"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Ngạch công chức
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ngach"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Mã số
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ma_so"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="mb-2">
+          <label>Bậc lương
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="bac_luong"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="mb-2">
+          <label>Hệ số
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="he_so"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <div class="mb-2">
+          <label>Từ tháng
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="tu_thang"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Danh hiệu được phong  (năm nào)(Anh hùng lao động, anh hùng lực lượng vũ trang, nhà giáo, thấy thuốc, nghệ sĩ nhân dân, ưu tú)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="danh_hieu_duoc_phong"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="mb-2">
+          <label>Sở trường công tác
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="so_truong_cong_tac"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="mb-2">
+          <label>Công việc lâu năm nhất
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="cong_viec_lau_nam"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="mb-2">
+          <label>Khen thưởng (Huân, huy chương, năm nào)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="khen_thuong"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+        <div class="mb-2">
+          <label>Kỷ luât (Đảng, Chính quyền, Đoàn thể, Cấp quyết định, năm nào, lý do, hình thức, ...):
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="ky_luat"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Tình trạng sức khỏe(tốt, bình thường, yếu hoặc có bệnh mãn tính gì)
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="suc_khoe"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Cao
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="cao"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Cao
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="can_nang"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="mb-2">
+          <label>Nhóm máu
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="nhom_mau"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Số chứng minh nhân dân
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="so_cmnd"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Thương binh loại
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="thuong_binh"  maxlength="50" trim>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="mb-2">
+          <label>Liệt sĩ
+            <span class="text-danger">*</span></label>
+          <input id="identifier" type="text" class="form-control" formControlName="liet_sy"  maxlength="50" trim>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-header">
+    <h3 class="modal-title mt-0"><b>Thông Danh sách Quá trình</b></h3>
+  </div>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình công tác</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_ct">
+    <thead>
+    <tr>
+      <th>Từ tháng, năm
+        đến tháng, năm</th>
+      <th>Chức danh, chức vụ, đơn vị công tác (Đảng, Chính quyền, Đoàn thể)</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td>
+          <input type="text" formControlName="value_1"  class="form-control">
+      </td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('CONG_TAC')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'CONG_TAC'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quản trình lương/phụ cấp</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_luong">
+    <thead>
+    <tr>
+      <th>Từ tháng, năm
+        đến tháng, năm</th>
+      <th>Ngạch/bậc</th>
+      <th>Hệ số lương</th>
+      <th>Phụ cấp</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="value_1"  class="form-control">
+      </td>
+      <td>
+        <input type="text" formControlName="value_2"  class="form-control">
+      </td>
+      <td>
+        <input type="text" formControlName="value_3"  class="form-control">
+      </td>
+      <td><input type="text" formControlName="value_4"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('LUONG')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'LUONG'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>{{quatrinh.value_4}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình biên chế/hợp đồng</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_bien_che">
+    <thead>
+    <tr>
+      <th>Từ tháng, năm
+        đến tháng, năm</th>
+      <th>Loại hợp đồng</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="value_1"  class="form-control">
+      </td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('BIEN_CHE')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'BIEN_CHE'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình đào tạo/bồi dưỡng</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_dao_tao">
+    <thead>
+    <tr>
+      <th>Thời gian học</th>
+      <th>Tên trường</th>
+      <th>Ngành học hoặc tên lớp học</th>
+      <th>Hình thức học</th>
+      <th>Văn bằng, chứng chỉ trình độ gì</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="value_1"  class="form-control">
+      </td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><input type="text" formControlName="value_3"   class="form-control"></td>
+      <td><input type="text" formControlName="value_4"   class="form-control"></td>
+      <td><input type="text" formControlName="value_5"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('DAO_TAO')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'DAO_TAO'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>{{quatrinh.value_4}}</td>
+        <td>{{quatrinh.value_5}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình khen thưởng</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_khen_thuong">
+    <thead>
+    <tr>
+      <th>Năm khen thưởng</th>
+      <th>Số quyết đinh</th>
+      <th>Ngày quyết định</th>
+      <th>Loại khen thưởng</th>
+      <th>Cấp quyết định</th>
+      <th>Danh hiệu khen thưởng</th>
+      <th>Hình thức khen thưởng</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td><input type="text" formControlName="value_1"   class="form-control"></td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><input type="text" formControlName="value_3"   class="form-control"></td>
+      <td><input type="text" formControlName="value_4"   class="form-control"></td>
+      <td><input type="text" formControlName="value_5"   class="form-control"></td>
+      <td><input type="text" formControlName="value_6"   class="form-control"></td>
+      <td><input type="text" formControlName="value_7"   class="form-control"></td>
+
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('KHEN_THUONG')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'KHEN_THUONG'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>{{quatrinh.value_4}}</td>
+        <td>{{quatrinh.value_5}}</td>
+        <td>{{quatrinh.value_6}}</td>
+        <td>{{quatrinh.value_7}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình kỷ luật</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_ky_luat">
+    <thead>
+    <tr>
+      <th>Năm kỷ luật</th>
+      <th>Số quyết đinh</th>
+      <th>Ngày quyết định</th>
+      <th>Loại kỉ luật</th>
+      <th>Cấp quyết định</th>
+      <th>Hình thức kỉ luật</th>
+      <th>Hành vi vi phạm</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td><input type="text" formControlName="value_1"   class="form-control"></td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><input type="text" formControlName="value_3"   class="form-control"></td>
+      <td><input type="text" formControlName="value_4"   class="form-control"></td>
+      <td><input type="text" formControlName="value_5"   class="form-control"></td>
+      <td><input type="text" formControlName="value_6"   class="form-control"></td>
+      <td><input type="text" formControlName="value_7"   class="form-control"></td>
+
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('KY_LUAT')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'KY_LUAT'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>{{quatrinh.value_4}}</td>
+        <td>{{quatrinh.value_5}}</td>
+        <td>{{quatrinh.value_6}}</td>
+        <td>{{quatrinh.value_7}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình bảo hiểm</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_bao_hiem">
+    <thead>
+    <tr>
+      <th>Từ tháng, năm
+        đến tháng, năm</th>
+      <th>Loại bảo hiểm</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="value_1"  class="form-control">
+      </td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('BAO_HIEM')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'BAO_HIEM'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình công tác đảng</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_cong_tac_dang">
+    <thead>
+    <tr>
+      <th>Từ tháng, năm
+        đến tháng, năm</th>
+      <th>Chức danh, chức vụ</th>
+      <th>Chi bộ</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td>
+        <input type="text" formControlName="value_1"  class="form-control">
+      </td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><input type="text" formControlName="value_3"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('CONG_TAC_DANG')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'CONG_TAC_DANG'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình nâng lương thường xuyên/trước hạn</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_nang_luong">
+    <thead>
+    <tr>
+      <th>Loại điều chỉnh lương</th>
+      <th>Loại lương</th>
+      <th>Ngạch/bậc</th>
+      <th>Hệ số lương</th>
+      <th>Ngày hưởng lương</th>
+      <th>Phần trăm hưởng</th>
+      <th>Phụ cấp</th>
+      <th>Ngày dự kiến nâng lương lần sau</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td><input type="text" formControlName="value_1"   class="form-control"></td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><input type="text" formControlName="value_3"   class="form-control"></td>
+      <td><input type="text" formControlName="value_4"   class="form-control"></td>
+      <td><input type="text" formControlName="value_5"   class="form-control"></td>
+      <td><input type="text" formControlName="value_6"   class="form-control"></td>
+      <td><input type="text" formControlName="value_7"   class="form-control"></td>
+      <td><input type="text" formControlName="value_8"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('NANG_LUONG')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'NANG_LUONG'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>{{quatrinh.value_4}}</td>
+        <td>{{quatrinh.value_5}}</td>
+        <td>{{quatrinh.value_6}}</td>
+        <td>{{quatrinh.value_7}}</td>
+        <td>{{quatrinh.value_8}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0"><b>Quá trình bổ nhiệm bổ nhiệm lại</b></h4>
+  </div>
+  <table class="table table-bordered" [formGroup]="form_qua_trinh_bo_nhiem_lai">
+    <thead>
+    <tr>
+      <th>Ngày bổ nhiệm</th>
+      <th>Số quyết định</th>
+      <th>Chức danh chức vụ bổ nhiệm</th>
+      <th>Loại</th>
+      <th>Hành động</th>
+    </tr>
+    <tr>
+      <td><input type="text" formControlName="value_1"   class="form-control"></td>
+      <td><input type="text" formControlName="value_2"   class="form-control"></td>
+      <td><input type="text" formControlName="value_3"   class="form-control"></td>
+      <td><input type="text" formControlName="value_4"   class="form-control"></td>
+      <td><button type="button" class="btn btn-primary" (click)="addQuatrinh('BO_NHIEM_LAI')"><i class="fas fa-plus"></i></button></td>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let quatrinh of danh_sach_qt">
+      <tr *ngIf="quatrinh.loai_qt === 'BO_NHIEM_LAI'">
+        <td>{{quatrinh.value_1}}</td>
+        <td>{{quatrinh.value_2}}</td>
+        <td>{{quatrinh.value_3}}</td>
+        <td>{{quatrinh.value_4}}</td>
+        <td>
+          <button type="button" class="btn btn-danger" (click)="delete(quatrinh)">Xóa</button>
+        </td>
+      </tr>
+    </ng-container>
+    </tbody>
+  </table>
+  <div class="modal-footer">
+    <button type="submit" class="btn btn-primary">Lưu</button>
+    <button type="button" class="btn btn-light">Hủy</button>
+  </div>
+</form>

@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <app-page-title title="Quản lý nghỉ hưu/ thôi việc"></app-page-title>
+  <div class="row">
+    <div class="card">
+      <div class="card-body">
+        <form [formGroup]="searchForm" (submit)="search()">
+          <div class="row">
+            <div class="col-md-2">
+              <div class="mb-4">
+                <label>Mã hiệu cán bộ</label>
+                <input id="username" name="code" type="text" class="form-control" formControlName="username" maxlength="500">
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <div class="mb-4">
+                <label>Tên cán bộ</label>
+                <input id="fullname" name="fullname" type="text" class="form-control" formControlName="fullname" maxlength="500">
+              </div>
+            </div>
+          </div>
+          <div class="d-flex flex-wrap gap-2 mt-2 justify-content-center">
+            <button type="submit" class="btn btn-primary"><i
+              class="fas fa-search"></i>{{'common.button.search'|translate}}</button>
+            <button type="button" (click)="create()" class="ml-2 btn btn-success"><i class="bx bx-plus-medical"></i>{{'common.button.insert'|translate}}</button>
+            <!-- <button type="button" (click)="delete()" class="ml-2 btn btn-danger" [disabled]="deleteCheck(tables)"><i class="fas fa-trash"></i>{{'common.button.delete'|translate}}</button> -->
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+
+        <!-- Table -->
+        <div class="table-responsive">
+          <table id="basic-datatable"
+                 class="table table-bordered dt-responsive nowrap no-footer dtr-inline">
+            <thead>
+            <tr>
+              <th>STT</th>
+              <th>Thao tác</th>
+              <th>Mã cán bộ</th>
+              <th>Tên cán bộ</th>
+              <th>Trạng thái</th>
+            </tr>
+            </thead>
+           <tbody *ngFor="let table of tables;let i=index">
+            <tr>
+              <td>
+                <ngb-highlight [result]="i + 1 + ((page.pageNumber - 1) * page.size)"></ngb-highlight>
+              </td>
+              <td>
+                <i class="fas fa-edit" style="cursor: pointer; color: #7d90ee" [ngbTooltip]="'Cập nhật'" (click)="edit(table)"></i>
+                <i class="fas fa-trash" style="cursor: pointer; color: #7d90ee" [ngbTooltip]="'Xóa'" (click)="delete(table)"></i>
+
+              </td>
+              <td style="max-width: 150px;">
+                <p class="class_nowrap_lims" >{{table.code}}</p>
+              </td>
+              <td style="max-width: 150px;">
+                <p class="class_nowrap_lims"  >{{table.fullname}}</p>
+              </td>
+              <td style="max-width: 150px;">
+                <p class="class_nowrap_lims" >{{table?.status=='03'?'Nghỉ Hưu':'Thôi việc'}}</p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row justify-content-md-between align-items-md-center mt-2">
+          <div class="col-sm-12 col-md-5">
+          </div>
+          <!-- Pagination -->
+          <div class="col-sm-12 col-md-5">
+            <div class="text-md-right float-md-end pagination-rounded">
+              <ngb-pagination [collectionSize]="page.totalElements" [(page)]="page.pageNumber" [pageSize]="page.size"
+                              [maxSize]="5" (pageChange)="changePage($event)">
+              </ngb-pagination>
+            </div>
+          </div>
+          <!-- End Pagination -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
