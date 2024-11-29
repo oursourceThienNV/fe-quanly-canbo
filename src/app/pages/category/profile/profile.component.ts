@@ -6,7 +6,7 @@ import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import Swal from "sweetalert2";
 import * as fileSaver from 'file-saver';
 import {UserProfileService} from "../../../core/services/user.service";
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 import {ProfileService} from "../../../core/services/profile.service";
 
 @Component({
@@ -47,7 +47,6 @@ export class ProfileComponent implements OnInit {
   }
 
   search() {
-    console.log("aaa",this.searchForm.get("username").value);
     this.setPage({offset: 0});
   }
 
@@ -115,7 +114,26 @@ export class ProfileComponent implements OnInit {
   }
 
   create() {
+    debugger;
     this.router.navigate(['/pages/category/profile/add']);
+    // const res = this.modalService.open(UsersDialogComponent, {size: 'lg', centered: true});
+    // res.componentInstance.title = this.translateService.instant('users.create_title');
+    // res.closed.subscribe(temp => {
+    //   this.setPage({offset: 0})
+    // })
+  }
+  edit(table:any) {
+    debugger;
+    this.router.navigate(['/pages/category/profile/edit/'+table.id]);
+    // const res = this.modalService.open(UsersDialogComponent, {size: 'lg', centered: true});
+    // res.componentInstance.title = this.translateService.instant('users.create_title');
+    // res.closed.subscribe(temp => {
+    //   this.setPage({offset: 0})
+    // })
+  }
+  detail(table:any) {
+    debugger;
+    this.router.navigate(['/pages/category/profile/'+table.id+"/detail"]);
     // const res = this.modalService.open(UsersDialogComponent, {size: 'lg', centered: true});
     // res.componentInstance.title = this.translateService.instant('users.create_title');
     // res.closed.subscribe(temp => {

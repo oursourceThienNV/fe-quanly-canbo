@@ -10,6 +10,7 @@ import {Router} from "@angular/router";
 import {ProfileService} from "../../../core/services/profile.service";
 import {LeaveDialogComponent} from "./leave-dialog.component";
 import {equals} from "@ngx-translate/core/lib/util";
+import {TranfersDialogComponent} from "../tranfer/tranfers-dialog.component";
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +24,7 @@ export class LeaveComponent implements OnInit {
     code:[null],
     fullname:[null]
   });
+  role:any;
   page = new Page();
   constructor(private fb: FormBuilder,
               private profileService: ProfileService,
@@ -33,6 +35,7 @@ export class LeaveComponent implements OnInit {
 
   ngOnInit(): void {
     this.setPage({offset: 0});
+    this.role= localStorage.getItem("role");
   }
 
   search() {
@@ -144,6 +147,14 @@ export class LeaveComponent implements OnInit {
       console.log("Hành động xóa đã bị hủy.");
     }
   }
-
+  detail(table) {
+    const res = this.modalService.open(TranfersDialogComponent, {size: 'lg', centered: true});
+    res.componentInstance.title = "Chi tiết";
+    res.componentInstance.inputData = table;
+    res.componentInstance.action = "detail";
+    res.closed.subscribe(temp => {
+      this.setPage({offset: 0})
+    })
+  }
 }
 

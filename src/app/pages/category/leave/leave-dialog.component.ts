@@ -34,6 +34,9 @@ export class LeaveDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.action==='detail'){
+      this.dataForm.disable();
+    }
     debugger;
     const body={};
     this.profileService.searchAll(body).subscribe(res=>{

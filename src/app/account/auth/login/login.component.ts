@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           data => {
             // this.router.navigate(['/pages/home']);
             if(localStorage.getItem("authDate")===""){
-              this.error="Đăng nhập thất bại";
+              alert("Đăng nhập thất bại vui lòng thử lại sau")
             }
             this.accountService.identity().subscribe(res=>{
               console.log("=>>>",res.body.userInfo);

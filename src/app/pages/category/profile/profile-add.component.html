@@ -443,7 +443,7 @@
       <th>Chức danh, chức vụ, đơn vị công tác (Đảng, Chính quyền, Đoàn thể)</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td>
           <input type="text" formControlName="value_1"  class="form-control">
       </td>
@@ -476,7 +476,7 @@
       <th>Phụ cấp</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td>
         <input type="text" formControlName="value_1"  class="form-control">
       </td>
@@ -510,13 +510,13 @@
   </div>
   <table class="table table-bordered" [formGroup]="form_qua_trinh_bien_che">
     <thead>
-    <tr>
+    <tr >
       <th>Từ tháng, năm
         đến tháng, năm</th>
       <th>Loại hợp đồng</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td>
         <input type="text" formControlName="value_1"  class="form-control">
       </td>
@@ -549,7 +549,7 @@
       <th>Văn bằng, chứng chỉ trình độ gì</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td>
         <input type="text" formControlName="value_1"  class="form-control">
       </td>
@@ -590,7 +590,7 @@
       <th>Hình thức khen thưởng</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td><input type="text" formControlName="value_1"   class="form-control"></td>
       <td><input type="text" formControlName="value_2"   class="form-control"></td>
       <td><input type="text" formControlName="value_3"   class="form-control"></td>
@@ -634,7 +634,7 @@
       <th>Hành vi vi phạm</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td><input type="text" formControlName="value_1"   class="form-control"></td>
       <td><input type="text" formControlName="value_2"   class="form-control"></td>
       <td><input type="text" formControlName="value_3"   class="form-control"></td>
@@ -674,7 +674,7 @@
       <th>Loại bảo hiểm</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td>
         <input type="text" formControlName="value_1"  class="form-control">
       </td>
@@ -706,7 +706,7 @@
       <th>Chi bộ</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td>
         <input type="text" formControlName="value_1"  class="form-control">
       </td>
@@ -733,7 +733,7 @@
   </div>
   <table class="table table-bordered" [formGroup]="form_qua_trinh_nang_luong">
     <thead>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <th>Loại điều chỉnh lương</th>
       <th>Loại lương</th>
       <th>Ngạch/bậc</th>
@@ -744,7 +744,7 @@
       <th>Ngày dự kiến nâng lương lần sau</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td><input type="text" formControlName="value_1"   class="form-control"></td>
       <td><input type="text" formControlName="value_2"   class="form-control"></td>
       <td><input type="text" formControlName="value_3"   class="form-control"></td>
@@ -786,7 +786,7 @@
       <th>Loại</th>
       <th>Hành động</th>
     </tr>
-    <tr>
+    <tr *ngIf="action!='detail'">
       <td><input type="text" formControlName="value_1"   class="form-control"></td>
       <td><input type="text" formControlName="value_2"   class="form-control"></td>
       <td><input type="text" formControlName="value_3"   class="form-control"></td>
@@ -809,7 +809,7 @@
     </tbody>
   </table>
   <div class="modal-footer">
-    <button type="submit" class="btn btn-primary">Lưu</button>
+    <button type="submit" class="btn btn-primary" *ngIf="action!='detail'">Lưu</button>
     <button type="button" class="btn btn-light">Hủy</button>
   </div>
 </form>

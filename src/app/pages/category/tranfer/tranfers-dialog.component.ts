@@ -36,6 +36,9 @@ export class TranfersDialogComponent implements OnInit {
   ngOnInit(): void {
     debugger;
     const body={};
+    if(this.action==='detail'){
+      this.dataForm.disable();
+    }
     this.profileService.searchAll(body).subscribe(res=>{
       this.listProfile=res?.body?.body
     })

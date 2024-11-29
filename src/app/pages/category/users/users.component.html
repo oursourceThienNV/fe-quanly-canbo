@@ -43,7 +43,7 @@
                 <ng-select formControlName="role" formControl="form-control">
                   <ng-option value="">Tất cả</ng-option>
                 <ng-option value="00">Admin</ng-option>
-                <ng-option value="01">Nhân viên</ng-option>
+                <ng-option value="01">Công chức</ng-option>
                   <ng-option value="02">Quản lý</ng-option>
                 </ng-select>
 
@@ -114,7 +114,7 @@
                 <p class="class_nowrap_lims" >{{table.phone}}</p>
               </td>
               <td>
-                {{table?.role==="00"?"Admin":"Nhân viên"}}
+                {{table?.role==="00"?"Admin":table?.role==="01"?"Công chức":table?.role==="02"?"Quản lý":""}}
               </td>
               <td>
                 {{table?.status==="01"?"Đang hoạt động":"Bị vô hiệu hóa"}}

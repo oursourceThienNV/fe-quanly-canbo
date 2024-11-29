@@ -22,6 +22,7 @@ export class TranfersComponent implements OnInit {
     code:[null],
     fullname:[null]
   });
+  role:any;
   page = new Page();
   constructor(private fb: FormBuilder,
               private profileService: ProfileService,
@@ -31,11 +32,11 @@ export class TranfersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.role= localStorage.getItem("role");
     this.setPage({offset: 0});
   }
 
   search() {
-    console.log("aaa",this.searchForm.get("username").value);
     this.setPage({offset: 0});
   }
 
@@ -104,6 +105,15 @@ export class TranfersComponent implements OnInit {
     res.componentInstance.title = "Cập nhật điều động/thuyên chuyển";
     res.componentInstance.inputData = table;
     res.componentInstance.action = "edit";
+    res.closed.subscribe(temp => {
+      this.setPage({offset: 0})
+    })
+  }
+  detail(table) {
+    const res = this.modalService.open(TranfersDialogComponent, {size: 'lg', centered: true});
+    res.componentInstance.title = "Chi tiết điều động/thuyên chuyển";
+    res.componentInstance.inputData = table;
+    res.componentInstance.action = "detail";
     res.closed.subscribe(temp => {
       this.setPage({offset: 0})
     })

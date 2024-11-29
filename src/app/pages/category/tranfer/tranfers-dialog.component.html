@@ -62,7 +62,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button (click)="save()" class="btn btn-primary">Lưu</button>
+    <button (click)="save()" class="btn btn-primary" *ngIf="action!='detail'">Lưu</button>
     <button type="button" class="btn btn-light"
             (click)="modal.close('Close click')">Hủy</button>
   </div>

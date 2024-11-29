@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { MenuItem } from './menu.model';
 import { TranslateService } from '@ngx-translate/core';
-import {MENU} from "./menu";
+import {MENU_ADMIN, MENU_BID} from "./menu";
 
 @Component({
   selector: 'app-sidebar',
@@ -139,7 +139,11 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
    * Initialize
    */
   initialize(): void {
-    this.menuItems = MENU;
+    if(localStorage.getItem("role")==='00'){
+      this.menuItems = MENU_ADMIN;
+    }else if(localStorage.getItem("role")==="02"||localStorage.getItem("role")==="01"){
+      this.menuItems = MENU_BID;
+    }
   }
 
   /**

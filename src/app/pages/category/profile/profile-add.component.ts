@@ -26,6 +26,7 @@ interface QuaTrinh {
 export class ProfileAddComponent implements OnInit {
   ngOnInit(): void {
     const currentYear = new Date().getFullYear(); // Gets the current year dynamically
+    this.role= localStorage.getItem("role");
 
     for (let i = 1920; i <= currentYear; i++) {
       this.listNamSinh.push(i);
@@ -33,6 +34,10 @@ export class ProfileAddComponent implements OnInit {
     debugger;
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      this.action=params['action'];
+      if (this.action==='detail'){
+        this.dataForm.disable();
+      }
     });
     const body2={
       id:this.id
@@ -49,7 +54,9 @@ export class ProfileAddComponent implements OnInit {
               private profileServices:ProfileService,private router: Router,
               private translateService: TranslateService,) {
   };
+  role:any;
   id:any;
+  action:any;
   listNamSinh: number[] = [];
   quatrinh:any;
   danh_sach_qt:QuaTrinh[]=[];

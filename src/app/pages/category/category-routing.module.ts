@@ -16,6 +16,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'profile/add', component: ProfileAddComponent},
   {path: 'profile/edit/:id', component: ProfileAddComponent},
+  {path: 'profile/:id/:action', component: ProfileAddComponent},
   {path: 'tranfers', component: TranfersComponent},
   {path: 'leave', component: LeaveComponent},
   {path: 'report', component: ReportComponent},
